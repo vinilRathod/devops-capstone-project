@@ -157,7 +157,7 @@ class TestAccountService(TestCase):
             f"{BASE_URL}/{0}", content_type="application/json"
         )
         self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
-  
+
     def test_update_account(self):
         """
         It should update an existing account.
@@ -179,7 +179,7 @@ class TestAccountService(TestCase):
             f"{BASE_URL}/0", content_type="application/json"
         )
         self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
-   
+
     def test_delete_account(self):
         """
         It should delete an account.
