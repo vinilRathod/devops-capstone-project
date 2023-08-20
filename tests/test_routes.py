@@ -22,6 +22,7 @@ BASE_URL = "/accounts"
 
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
@@ -156,12 +157,12 @@ class TestAccountService(TestCase):
             f"{BASE_URL}/{0}", content_type="application/json"
         )
         self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
-        
+  
     def test_update_account(self):
         """
         It should update an existing account.
         """
-        
+
         account = self._create_accounts(1)[0]
         new_account = account.serialize()
         new_account["name"] = "Vinil"
@@ -178,16 +179,16 @@ class TestAccountService(TestCase):
             f"{BASE_URL}/0", content_type="application/json"
         )
         self.assertEqual(resp.status_code, status.HTTP_404_NOT_FOUND)
-        
+   
     def test_delete_account(self):
         """
         It should delete an account.
         """
-        
+
         account = self._create_accounts(1)[0]
         resp = self.client.delete(f"{BASE_URL}/{account.id}")
         self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
-    
+
     def test_delete_nonexisting_account(self):
         """
         It should return 404 as account with id 0 is not present for deletion.
